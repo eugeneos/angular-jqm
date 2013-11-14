@@ -1,4 +1,4 @@
 <span class="ui-btn-inner">
   <span class="ui-btn-text" ng-transclude></span>
-  <span ng-if="$scopeAs.jqmBtn.icon" class="ui-icon {{$parent.icon}}">&nbsp;</span>
+  <span ng-if="$scopeAs.jqmBtn.icon" class="ui-icon {{$parent.icon}}" ng-class="{'ui-icon-shadow': $parent.iconShadow}">&nbsp;</span>
 </span>
