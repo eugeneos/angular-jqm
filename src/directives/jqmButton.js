@@ -14,7 +14,8 @@
  * @param {boolean=} mini Whether or not to use the mini layout
  * @param {boolean=} inline Whether or not to make the button inline (smaller)
  * @param {boolean=} shadow Whether or not to give the button shadows (default true)
- * @param {boolean=} corners Whether or not to give the button shadows (default true)
+ * @param {boolean=} corners Whether or not to give the button corners (default true)
+ * @param {boolean=} iconShadow Whether or not the button's icon should have a shadow (default false)
  *
  * @example
 <example module="jqm">
@@ -54,12 +55,14 @@ jqmModule.directive('jqmButton', ['jqmClassDirective', 'jqmOnceClassDirective', 
       mini: '@',
       shadow: '@',
       corners: '@',
-      inline: '@'
+      inline: '@',
+      iconShadow: '@'
     },
     require: '^?jqmControlGroup',
-    compile: function(elm, attr) {
+    compile: function (elm, attr) {
       attr.shadow = isDef(attr.shadow) ? attr.shadow==='true' : 'true';
       attr.corners = isDef(attr.corners) ? attr.corners==='true' : 'true';
+      attr.iconShadow = isDef(attr.iconShadow) ? attr.iconShadow==='true' : false;
 
       elm[0].className += ' ui-btn';
       attr.$set('jqmOnceClass', "{{$scopeAs.jqmBtn.getIconPos() ? 'ui-btn-icon-'+$scopeAs.jqmBtn.getIconPos() : ''}}");
