@@ -40,6 +40,15 @@ jqmModule.factory('$orientation', ['$window', '$rootScope', function($window, $r
   function getOrientation() {
     var w = $window.innerWidth,
       h = $window.innerHeight;
+    
+    if ($window.orientation !== undefined && $window.orientation !== null) {
+      if ($window.orientation === 0 || $window.orientation === 180) {
+          return VERTICAL;
+      } else {
+          return HORIZONTAL;
+      }
+    }
+      
     if (h < 200) {
       // In case of the Android screen size bug we assume
       // vertical, as the keyboard takes the whole screen
