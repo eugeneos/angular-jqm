@@ -1,12 +1,13 @@
 .ui-mobile .ui-page {
   height: 100%;
   min-height: 0;
-  overflow: hidden;
 }
 .ui-content {
   position: relative;
   margin: 0;
-  padding: 0;
+  /* Removed, since padding:0 produces results inconsistent with jQuery Mobile */
+  /*padding: 0;*/
+  -webkit-transform: translate3d(0, 0, 0);
 }
 .ui-content.jqm-content-with-header {
   top: 42px
@@ -18,4 +19,11 @@
 .jqm-standalone-page {
   display: block;
   position: relative;
+}
+
+/* Fix for iOS7 native scroll (empty div is added to the ui-content div at the bottom to ensure content can be scrolled to the very end without being obscured by the footer) */
+.jqm-scroll-fix {
+    height: 120px;
+    min-height: 120px;
+    display: block;
 }

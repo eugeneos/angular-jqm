@@ -40,7 +40,9 @@ jqmModule.directive('jqmTextinput', ['inputDirective', function (inputDirective)
       clearBtnText: '@',
       disabled: '@',
       mini: '@',
-      placeholder: '@'
+      placeholder: '@',
+      autocorrect: '@',
+      autocapitalize: '@'
     },
     link: function (scope, element, attr, ngModelCtrl) {
       var input = angular.element(element[0].getElementsByTagName("input"));

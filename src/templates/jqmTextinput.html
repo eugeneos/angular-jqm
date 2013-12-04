@@ -7,6 +7,7 @@
     'ui-input-text ui-corner-all': !$scopeAs.jqmTextinput.isSearch()}"
    class="ui-shadow-inset ui-btn-shadow ui-body-{{$scopeAs.jqmTextinput.$theme}}">
   <input type="{{$scopeAs.jqmTextinput.typeValue}}" class="ui-input-text ui-body-{{$scopeAs.jqmTextinput.$theme}}"
+       autocorrect="{{$scopeAs.jqmTextinput.autocorrect}}" autocapitalize="{{$scopeAs.jqmTextinput.autocapitalize}}"
        ng-class="{'mobile-textinput-disabled ui-state-disabled': $scopeAs.jqmTextinput.disabled}" placeholder="{{$scopeAs.jqmTextinput.placeholder}}">
   <a ng-if="$scopeAs.jqmTextinput.clearBtn || $scopeAs.jqmTextinput.type === 'search'" href="#" ng-class="{'ui-input-clear-hidden': !getValue()}"
      ng-click="clearValue($event)"

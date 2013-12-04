@@ -3,6 +3,8 @@
 }
 html, body {
   -webkit-user-select: none;
+  /* Added -ms as well just in case to ensure selection is disabled in IE / mobile IE */
+  -ms-user-select: none;
   -moz-user-select: none;
   user-select: none;
 }

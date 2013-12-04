@@ -20,4 +20,7 @@ jqmModule.run(['$anchorScroll', '$rootScope', function($anchorScroll, $rootScope
   $rootScope.$on('$orientationChanged', function(event) {
     $anchorScroll();
   });
+  $rootScope.$on('$fullScreenChanged', function(event) {
+    $anchorScroll();
+  });
 }]);

@@ -25,7 +25,7 @@
  </file>
  </example>
  */
-jqmModule.directive('jqmPage', ['$rootScope', '$controller', '$scroller', function ($rootScope, $controller, $scroller) {
+jqmModule.directive('jqmPage', ['$rootScope', '$controller', '$scroller', '$iosScroll', function ($rootScope, $controller, $scroller, $iosScroll) {
   return {
     restrict: 'A',
     require: 'jqmPage',
@@ -78,7 +78,20 @@ jqmModule.directive('jqmPage', ['$rootScope', '$controller', '$scroller', functi
     }
   };
   function JqmPageController(element) {
-    var scroller = $scroller(element.children());
+    var scroller = null;
+
+    if ($iosScroll.iosFixNeeded()) {
+      //On iOS7 only, we do native scroll because angular-scrolly scrolling is broken (leads to strange click events,
+      //see https://github.com/angular-widgets/angular-jqm/issues/183 ).
+
+      //In this case, none of the functions below (scroll, scrollHeight, outOfBounds) will work.
+      //TODO: We probably want to throw some sort of meaningful exceptions in this case, or actually implement these functions for native scroll.
+
+      $iosScroll.initializeNativeScrolling(element.children());
+
+    } else {
+      scroller = $scroller(element.children());
+    }
 
     this.scroll = function(newPos, easeTime) {
       if (arguments.length) {

@@ -104,6 +104,12 @@ function($position, animationComplete, $parse, $rootElement, $timeout, $compile,
         elm.addClass('in').removeClass('out');
       }
 
+      //We do this again, because initially we don't have accurate popup measurements
+      //See https://github.com/angular-widgets/angular-jqm/issues/166
+      $timeout(function () {
+          elm.css(getPosition(elm, target, placement));
+      }, 0);
+
     }
     function hideForElement(target) {
       if (scope.target && target && scope.target[0] === target[0]) {
