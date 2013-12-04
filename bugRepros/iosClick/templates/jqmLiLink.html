@@ -1,0 +1,18 @@
+<li class="ui-li ui-btn" jqm-scope-as="jqmLiLink"
+jqm-once-class="{{$scopeAs.jqmLiLink.icon ? 'ui-li-has-arrow ui-btn-icon-'+$scopeAs.jqmLiLink.iconpos : ''}} ui-btn-up-{{$theme}}"
+  jqm-class="{'ui-first-child': $scopeAs.jqmLiLink.$position.first, 
+  'ui-last-child': $scopeAs.jqmLiLink.$position.last, 
+  'ui-li-has-thumb': $scopeAs.jqmLiLink.hasThumb, 
+  'ui-li-has-count': $scopeAs.jqmLiLink.hasCount}">
+  <div class="ui-btn-inner ui-li">
+    <div class="ui-btn-text">
+    <a ng-href="{{$scopeAs.jqmLiLink.link}}" class="ui-link-inherit" ng-transclude>
+    </a>
+  </div>
+  <span ng-show="$scopeAs.jqmLiLink.icon" 
+    class="ui-icon {{$scopeAs.jqmLiLink.icon}}" 
+    jqm-class="{'ui-icon-shadow': $scopeAs.jqmLiLink.iconShadow}">
+    &nbsp;
+  </span>
+  </div>
+</li>

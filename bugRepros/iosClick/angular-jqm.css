@@ -1,0 +1,77 @@
+﻿.jqm-scroll-fix {
+    height: 120px;
+    min-height: 120px;
+    display: block;
+}
+
+/* (padding:0 removed - this used to be under jqmPage but actually affects other things too, like popups) */
+/* Also, trnslate3d added to address iOS7 rendering bug */
+.ui-content {
+  -webkit-transform: translate3d(0, 0, 0);
+  position: relative;
+  margin: 0;
+  /*padding: 0;*/
+}
+
+/* Disallow selection of most text to prevent copy/paste dialogs in mobile browsers, see http://ajoslin.github.io/angular-scrolly/#/guide/gotchas */
+/* (ms-user-select added just in case) */
+
+html, body {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+    user-select: none;
+}
+
+/* STANDARD ANGULAR-JQM CSS below this point: */
+
+/* Needed for angular-scrolly, part of angular-jqm, see http://ajoslin.github.io/angular-scrolly/#/guide/gotchas */
+* {
+  -webkit-backface-visibility: hidden;
+}
+
+/* browser resets */
+.ui-mobile, .ui-mobile html, .ui-mobile body {
+  height: 100%;
+  margin: 0
+}
+
+/* jqmPage */
+.ui-mobile .ui-page {
+  height: 100%;
+  min-height: 0;
+  /*overflow: hidden; Removed as of 2013-12-02 in angular-jqm master branch */
+}
+.ui-content.jqm-content-with-header {
+  top: 42px
+}
+.ui-content.jqm-content-with-footer {
+  bottom: 43px
+}
+.jqm-standalone-page {
+  display: block;
+  position: relative;
+}
+
+/* jqmHeader */
+.ui-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1
+}
+
+/* jqmFooter */
+.ui-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1
+}
+
+/* jqmView */
+.ui-mobile-viewport {
+  /* needed to allow multiple viewports */
+  position: relative;
+  height:100%
+}
