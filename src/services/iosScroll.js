@@ -3,11 +3,9 @@ jqmModule.factory('$iosScroll', ['$timeout', '$rootElement', function ($timeout,
     return {
 
         iosFixNeeded: function () {
-            //Currently we do the fix only for iOS7, as it's not needed in iOS6 and we optimistically
-            //hope that Mobile Safari will be fixed in iOS8. If it won't be, we may need to add a clause for future iOS versions as well.
             if (!navigator) return false;
             if (!navigator.userAgent) return false;
-            return navigator.userAgent.match(/(iPad|iPhone|iPod touch);.*CPU.*OS 7_\d/i);
+            return navigator.userAgent.match(/(iPad|iPhone|iPod touch)/i);
         },
 
         initializeNativeScrolling: function (elements) {
@@ -23,6 +21,10 @@ jqmModule.factory('$iosScroll', ['$timeout', '$rootElement', function ($timeout,
             //leads to some really strange/buggy effects.
             //TODO: To make this more general we should probably find the "body" element somehow instead of relying on $rootElement to be the body.
             //Same for unbind() below.
+            //TODO: This doesn't fully work - sometimes, you can still scroll the entire app. Worse yet, if you drag the footer upwards (even
+            //after the timeout) you can also scroll the entire app.
+            //What's even worse, window.scrollY remains 0 for some reason, and the 'scroll' event is not fired, neither on the document nor
+            //on the document.body. We need a better solution here.
             $rootElement.bind('touchmove', function (e) { e.preventDefault() });
 
             //TODO:

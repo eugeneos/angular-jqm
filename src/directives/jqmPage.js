@@ -81,7 +81,7 @@ jqmModule.directive('jqmPage', ['$rootScope', '$controller', '$scroller', '$iosS
     var scroller = null;
 
     if ($iosScroll.iosFixNeeded()) {
-      //On iOS7 only, we do native scroll because angular-scrolly scrolling is broken (leads to strange click events,
+      //On iOS only, we do native scroll because angular-scrolly scrolling is broken (leads to strange click events,
       //see https://github.com/angular-widgets/angular-jqm/issues/183 ).
 
       //In this case, none of the functions below (scroll, scrollHeight, outOfBounds) will work.
